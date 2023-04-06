@@ -1,0 +1,13 @@
+C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\bin\Debug\netcoreapp3.1\EF.Core.Job.Application.deps.json
+C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\bin\Debug\netcoreapp3.1\EF.Core.Job.Application.runtimeconfig.json
+C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\bin\Debug\netcoreapp3.1\EF.Core.Job.Application.runtimeconfig.dev.json
+C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\bin\Debug\netcoreapp3.1\EF.Core.Job.Application.dll
+C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\bin\Debug\netcoreapp3.1\EF.Core.Job.Application.pdb
+C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\obj\Debug\netcoreapp3.1\EF.Core.Job.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\obj\Debug\netcoreapp3.1\EF.Core.Job.Application.AssemblyInfoInputs.cache
+C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\obj\Debug\netcoreapp3.1\EF.Core.Job.Application.AssemblyInfo.cs
+C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\obj\Debug\netcoreapp3.1\EF.Core.Job.Application.csproj.CoreCompileInputs.cache
+C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\obj\Debug\netcoreapp3.1\EF.Core.Job.Application.dll
+C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\obj\Debug\netcoreapp3.1\EF.Core.Job.Application.pdb
+C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\obj\Debug\netcoreapp3.1\EF.Core.Job.Application.genruntimeconfig.cache
+C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\obj\Debug\netcoreapp3.1\EF.Core.Job.Application.csproj.AssemblyReference.cache

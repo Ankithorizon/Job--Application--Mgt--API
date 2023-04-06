@@ -1,0 +1,16 @@
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\bin\Debug\netcoreapp3.1\ServiceLib.Job.Application.deps.json
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\bin\Debug\netcoreapp3.1\ServiceLib.Job.Application.dll
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\bin\Debug\netcoreapp3.1\ServiceLib.Job.Application.pdb
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\obj\Debug\netcoreapp3.1\ServiceLib.Job.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\obj\Debug\netcoreapp3.1\ServiceLib.Job.Application.AssemblyInfoInputs.cache
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\obj\Debug\netcoreapp3.1\ServiceLib.Job.Application.AssemblyInfo.cs
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\obj\Debug\netcoreapp3.1\ServiceLib.Job.Application.csproj.CoreCompileInputs.cache
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\obj\Debug\netcoreapp3.1\ServiceLib.Job.Application.dll
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\obj\Debug\netcoreapp3.1\ServiceLib.Job.Application.pdb
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\obj\Debug\netcoreapp3.1\ServiceLib.Job.Application.csproj.AssemblyReference.cache
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\bin\Debug\netcoreapp3.1\ServiceLib.Job.Application.runtimeconfig.json
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\bin\Debug\netcoreapp3.1\ServiceLib.Job.Application.runtimeconfig.dev.json
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\bin\Debug\netcoreapp3.1\EF.Core.Job.Application.dll
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\bin\Debug\netcoreapp3.1\EF.Core.Job.Application.pdb
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\obj\Debug\netcoreapp3.1\ServiceLib.Job.Application.csproj.CopyComplete
+C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\obj\Debug\netcoreapp3.1\ServiceLib.Job.Application.genruntimeconfig.cache

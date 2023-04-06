@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = EmailService.Job.Application
+build_property.ProjectDir = C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\

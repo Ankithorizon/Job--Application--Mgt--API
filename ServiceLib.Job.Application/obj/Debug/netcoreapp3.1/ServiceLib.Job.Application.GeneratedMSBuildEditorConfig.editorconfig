@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = ServiceLib.Job.Application
+build_property.ProjectDir = C:\Job-Application-MGT\Job-Application-MGT\ServiceLib.Job.Application\

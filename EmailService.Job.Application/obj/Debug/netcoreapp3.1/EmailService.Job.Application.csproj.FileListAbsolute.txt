@@ -1,0 +1,16 @@
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\bin\Debug\netcoreapp3.1\EmailService.Job.Application.deps.json
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\bin\Debug\netcoreapp3.1\EmailService.Job.Application.dll
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\bin\Debug\netcoreapp3.1\EmailService.Job.Application.pdb
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\obj\Debug\netcoreapp3.1\EmailService.Job.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\obj\Debug\netcoreapp3.1\EmailService.Job.Application.AssemblyInfoInputs.cache
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\obj\Debug\netcoreapp3.1\EmailService.Job.Application.AssemblyInfo.cs
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\obj\Debug\netcoreapp3.1\EmailService.Job.Application.csproj.CoreCompileInputs.cache
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\obj\Debug\netcoreapp3.1\EmailService.Job.Application.dll
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\obj\Debug\netcoreapp3.1\EmailService.Job.Application.pdb
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\obj\Debug\netcoreapp3.1\EmailService.Job.Application.csproj.AssemblyReference.cache
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\bin\Debug\netcoreapp3.1\Select.Html.dep
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\bin\Debug\netcoreapp3.1\EF.Core.Job.Application.dll
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\bin\Debug\netcoreapp3.1\ResumeService.Job.Application.dll
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\bin\Debug\netcoreapp3.1\ResumeService.Job.Application.pdb
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\bin\Debug\netcoreapp3.1\EF.Core.Job.Application.pdb
+C:\Job-Application-MGT\Job-Application-MGT\EmailService.Job.Application\obj\Debug\netcoreapp3.1\EmailService.Job.Application.csproj.CopyComplete

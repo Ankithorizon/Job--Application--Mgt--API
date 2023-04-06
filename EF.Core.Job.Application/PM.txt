@@ -1,0 +1,4 @@
+﻿Scaffold-DbContext "Server=CHICAAMBICA\SQLExpress;Database=JobApplicationDBContext;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DBFirst_SQLTOLINQ_Models -force
+
+EntityFrameworkCore\Add-Migration initial-db-create -context EF.Core.Job.Application.Context.JobApplicationDBContext -OutputDir Migrations
+EntityFrameworkCore\update-database -context EF.Core.Job.Application.Context.JobApplicationDBContext
