@@ -23,7 +23,7 @@ namespace EmailService.Job.Application.Repositories
         public void SendEmail(Message message)
         {
             var emailMessage = CreateEmailMessage(message);
-
+            
             Send(emailMessage);
         }
 
