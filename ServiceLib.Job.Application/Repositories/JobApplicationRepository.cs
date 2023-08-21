@@ -6,6 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace ServiceLib.Job.Application.Repositories
 {
@@ -34,14 +37,14 @@ namespace ServiceLib.Job.Application.Repositories
         }
 
         // ef-core transaction
-        public JobApplication AddJobApp(JobApplication jobApplication)
+        public async Task<JobApplication> AddJobApp(JobApplication jobApplication)
         {
             using var transaction = appDbContext.Database.BeginTransaction();
             try
             {
                 // 1)
-                var result = appDbContext.JobApplications.Add(jobApplication);
-                appDbContext.SaveChanges();
+                var result = await appDbContext.JobApplications.AddAsync(jobApplication);
+                await appDbContext.SaveChangesAsync();
 
                 // throw new Exception();
 
@@ -52,8 +55,8 @@ namespace ServiceLib.Job.Application.Repositories
                     JobApplicationId = result.Entity.JobApplicationId,
                     AppStatus = 0
                 };
-                appDbContext.AppStatusLog.Add(appStatusLog);
-                appDbContext.SaveChanges();
+                await appDbContext.AppStatusLog.AddAsync(appStatusLog);
+                await appDbContext.SaveChangesAsync();
 
                 // commit 1 & 2
                 transaction.Commit();

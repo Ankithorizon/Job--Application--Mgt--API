@@ -3,12 +3,14 @@ using ServiceLib.Job.Application.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace ServiceLib.Job.Application.Interfaces
 {
     public interface IJobApplicationRepository
     {
-        JobApplication AddJobApp(JobApplication jobApplication);
+        Task<JobApplication> AddJobApp(JobApplication jobApplication);
         IEnumerable<JobApplication> GetAllJobApps();
         List<string> GetAppStatusTypes();
         JobApplication EditJobApp(JobApplicationEditVM jobApplication);

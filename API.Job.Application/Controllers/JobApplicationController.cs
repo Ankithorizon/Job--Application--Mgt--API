@@ -76,7 +76,7 @@ namespace API.Job.Application.Controllers
 
         [HttpPost]
         [Route("addJobApp")]
-        public IActionResult AddJobApp(JobApplication jobAppData)
+        public async Task<IActionResult> AddJobApp(JobApplication jobAppData)
         {
             _response = new APIResponse();
             try
@@ -97,7 +97,7 @@ namespace API.Job.Application.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    _jobAppRepo.AddJobApp(jobAppData);
+                    await _jobAppRepo.AddJobApp(jobAppData);
                     _response.ResponseCode = 0;
                     _response.ResponseMessage = "Job Applied Successfully !";
                     return Ok(_response);
