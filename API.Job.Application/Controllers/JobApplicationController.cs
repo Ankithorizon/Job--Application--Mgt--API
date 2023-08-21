@@ -31,11 +31,11 @@ namespace API.Job.Application.Controllers
 
         [HttpGet]
         [Route("getAllJobApps")]
-        public IActionResult GetAllJobApps()
+        public async Task<IActionResult> GetAllJobApps()
         {
             try
             {
-                var allJobApps = _jobAppRepo.GetAllJobApps();
+                var allJobApps = await _jobAppRepo.GetAllJobApps();
                 return Ok(allJobApps);
             }
             catch(Exception ex)
@@ -46,11 +46,11 @@ namespace API.Job.Application.Controllers
 
         [HttpGet]
         [Route("getAppStatusTypes")]
-        public IActionResult GetAppStatusTypes()
+        public async Task<IActionResult> GetAppStatusTypes()
         {
             try
             {
-                var appStatusTypes = _jobAppRepo.GetAppStatusTypes();
+                var appStatusTypes = await _jobAppRepo.GetAppStatusTypes();
                 return Ok(appStatusTypes);
             }
             catch (Exception ex)

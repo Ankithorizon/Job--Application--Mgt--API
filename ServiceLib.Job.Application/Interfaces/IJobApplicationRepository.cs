@@ -11,8 +11,8 @@ namespace ServiceLib.Job.Application.Interfaces
     public interface IJobApplicationRepository
     {
         Task<JobApplication> AddJobApp(JobApplication jobApplication);
-        IEnumerable<JobApplication> GetAllJobApps();
-        List<string> GetAppStatusTypes();
+        Task<IEnumerable<JobApplication>> GetAllJobApps();
+        Task<List<string>> GetAppStatusTypes();
         JobApplication EditJobApp(JobApplicationEditVM jobApplication);
         JobApplication ViewJobApp(int jobAppId);
         bool DeleteJobApp(JobApplication jobApplication);

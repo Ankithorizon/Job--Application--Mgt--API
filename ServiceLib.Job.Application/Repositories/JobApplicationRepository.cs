@@ -69,23 +69,24 @@ namespace ServiceLib.Job.Application.Repositories
             }
         }
 
-        public IEnumerable<JobApplication> GetAllJobApps()
+        public async Task<IEnumerable<JobApplication>> GetAllJobApps()
         {
-            var jobApps = appDbContext.JobApplications;
+            var jobApps =  appDbContext.JobApplications;
             if (jobApps != null)
-                return jobApps;
+                return await jobApps.ToListAsync();
             else
                 return new List<JobApplication>();
         }
 
-        public List<string> GetAppStatusTypes()
+        public async Task<List<string>> GetAppStatusTypes()
         {
             List<string> appStatusTypes = new List<string>();
             foreach (string appStatusType in Enum.GetNames(typeof(AppStatusType)))
             {
                 appStatusTypes.Add(appStatusType);
             }
-            return appStatusTypes;
+            return await Task.Run(() => appStatusTypes);
+            // return appStatusTypes;
         }
 
         // ef-core transaction
