@@ -21,13 +21,15 @@ namespace ServiceLib.Job.Application.Repositories
             this.appDbContext = appDbContext;
         }
 
-        public bool JobAppClosed(int jobApplicationId)
+        public async Task<bool> JobAppClosed(int jobApplicationId)
         {
             var lastAppStatusLog = appDbContext.AppStatusLog
                                    .Where(x => x.JobApplicationId == jobApplicationId);
             if (lastAppStatusLog != null && lastAppStatusLog.Count() > 0)
             {
-                var lastAppStatusLog_ = lastAppStatusLog.ToList().LastOrDefault();
+                // var lastAppStatusLog_ = lastAppStatusLog.ToList().LastOrDefault();
+                var lastAppStatusLog__ = await lastAppStatusLog.ToListAsync();
+                var lastAppStatusLog_ = lastAppStatusLog__.LastOrDefault();
                 if (lastAppStatusLog_.AppStatus == AppStatusType.Closed)
                 {
                     return true;
@@ -90,26 +92,26 @@ namespace ServiceLib.Job.Application.Repositories
         }
 
         // ef-core transaction
-        public JobApplication EditJobApp(JobApplicationEditVM jobApplication)
+        public async Task<JobApplication> EditJobApp(JobApplicationEditVM jobApplication)
         {
             // throw new Exception();          
 
             using var transaction = appDbContext.Database.BeginTransaction();
             try
             {
-                var jobApp_ = appDbContext.JobApplications
-                          .Where(x => x.JobApplicationId == jobApplication.JobApplication.JobApplicationId).FirstOrDefault();
+                var jobApp_ = await appDbContext.JobApplications
+                          .Where(x => x.JobApplicationId == jobApplication.JobApplication.JobApplicationId).FirstOrDefaultAsync();
                 if (jobApp_ != null)
                 {
                     // 1) edit AppStatusLog db table
                     if (jobApp_.AppliedOn.Date != jobApplication.JobApplication.AppliedOn.Date)
                     {
-                        var appStatusLogData = appDbContext.AppStatusLog
-                                                .Where(x => x.JobApplicationId == jobApplication.JobApplication.JobApplicationId && x.AppStatus == AppStatusType.Applied).FirstOrDefault();
+                        var appStatusLogData = await appDbContext.AppStatusLog
+                                                .Where(x => x.JobApplicationId == jobApplication.JobApplication.JobApplicationId && x.AppStatus == AppStatusType.Applied).FirstOrDefaultAsync();
                         if (appStatusLogData != null)
                         {
                             appStatusLogData.AppStatusChangedOn = jobApplication.JobApplication.AppliedOn;
-                            appDbContext.SaveChanges();
+                            await appDbContext.SaveChangesAsync();
                         }
                     }
 
@@ -126,7 +128,7 @@ namespace ServiceLib.Job.Application.Repositories
                     jobApp_.AppStatus = jobApplication.JobApplication.AppStatus;
                     jobApp_.AppliedOn = jobApplication.JobApplication.AppliedOn;
                     jobApp_.AgencyName = jobApplication.JobApplication.AgencyName;
-                    appDbContext.SaveChanges();
+                    await appDbContext.SaveChangesAsync();
 
 
                     // throw new Exception();
@@ -140,8 +142,8 @@ namespace ServiceLib.Job.Application.Repositories
                             JobApplicationId = jobApp_.JobApplicationId,
                             AppStatus = jobApplication.JobApplication.AppStatus
                         };
-                        appDbContext.AppStatusLog.Add(appStatusLog);
-                        appDbContext.SaveChanges();
+                        await appDbContext.AppStatusLog.AddAsync(appStatusLog);
+                        await appDbContext.SaveChangesAsync();
                     }
 
 
@@ -161,20 +163,20 @@ namespace ServiceLib.Job.Application.Repositories
             }
         }
 
-        public JobApplication ViewJobApp(int jobAppId)
+        public async Task<JobApplication> ViewJobApp(int jobAppId)
         {
             // check for exception
             // throw new Exception();
 
             JobApplication jobApplication = new JobApplication();
 
-            jobApplication = appDbContext.JobApplications
-                                .Where(x => x.JobApplicationId == jobAppId).FirstOrDefault();
+            jobApplication = await appDbContext.JobApplications
+                                .Where(x => x.JobApplicationId == jobAppId).FirstOrDefaultAsync();
 
             return jobApplication;
         }
 
-        public bool DeleteJobApp(JobApplication jobApplication)
+        public async Task<bool> DeleteJobApp(JobApplication jobApplication)
         {
             try
             {
@@ -182,7 +184,7 @@ namespace ServiceLib.Job.Application.Repositories
                 // throw new Exception();
 
                 appDbContext.JobApplications.RemoveRange(appDbContext.JobApplications.Where(x => x.JobApplicationId == jobApplication.JobApplicationId).ToList());
-                appDbContext.SaveChanges();
+                await appDbContext.SaveChangesAsync();
                 return true;
             }
             catch (Exception ex)
@@ -191,7 +193,7 @@ namespace ServiceLib.Job.Application.Repositories
             }
         }
 
-        public IEnumerable<AppStatusLog> TrackJobAppStatus(int jobAppId)
+        public async Task<IEnumerable<AppStatusLog>> TrackJobAppStatus(int jobAppId)
         {
             List<AppStatusLog> appStatusLog = new List<AppStatusLog>();
 
@@ -199,7 +201,7 @@ namespace ServiceLib.Job.Application.Repositories
                             .Where(x => x.JobApplicationId == jobAppId);
             if (appStatusLog_ != null && appStatusLog_.Count() > 0)
             {
-                appStatusLog = appStatusLog_.ToList();
+                appStatusLog = await appStatusLog_.ToListAsync();
             }
             return appStatusLog;
         }

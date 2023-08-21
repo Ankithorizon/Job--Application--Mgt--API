@@ -61,11 +61,11 @@ namespace API.Job.Application.Controllers
 
         [HttpGet]
         [Route("viewJobApp/{jobAppId}")]
-        public IActionResult ViewJobApp(int jobAppId)
+        public async Task<IActionResult> ViewJobApp(int jobAppId)
         {
             try
             {
-                var jobApp = _jobAppRepo.ViewJobApp(jobAppId);
+                var jobApp = await _jobAppRepo.ViewJobApp(jobAppId);
                 return Ok(jobApp);
             }
             catch (Exception ex)
@@ -116,7 +116,7 @@ namespace API.Job.Application.Controllers
 
         [HttpPost]
         [Route("editJobApp")]
-        public IActionResult EditJobApp(JobApplicationEditVM jobAppData)
+        public async Task<IActionResult> EditJobApp(JobApplicationEditVM jobAppData)
         {
             _response = new APIResponse();
             try
@@ -139,7 +139,7 @@ namespace API.Job.Application.Controllers
                 {
                     // check for appStatus==Closed
                     // user can't edit this job-app
-                    if (_jobAppRepo.JobAppClosed(jobAppData.JobApplication.JobApplicationId))
+                    if (await _jobAppRepo.JobAppClosed(jobAppData.JobApplication.JobApplicationId))
                     {
                         _response.ResponseCode = -1;
                         _response.ResponseMessage = "This Job-Application is already CLOSED!";
@@ -147,7 +147,7 @@ namespace API.Job.Application.Controllers
                     }
 
 
-                    if (_jobAppRepo.EditJobApp(jobAppData) != null)
+                    if (await _jobAppRepo.EditJobApp(jobAppData) != null)
                     {
                         _response.ResponseCode = 0;
                         _response.ResponseMessage = "Job Edited Successfully !";
@@ -174,7 +174,7 @@ namespace API.Job.Application.Controllers
 
         [HttpPost]
         [Route("deleteJobApp")]
-        public IActionResult DeleteJobApp(JobApplication jobAppData)
+        public async Task<IActionResult> DeleteJobApp(JobApplication jobAppData)
         {
             _response = new APIResponse();
             try
@@ -189,7 +189,7 @@ namespace API.Job.Application.Controllers
 
                 // throw new Exception();            
 
-                if (_jobAppRepo.DeleteJobApp(jobAppData))
+                if (await _jobAppRepo.DeleteJobApp(jobAppData))
                 {
                     _response.ResponseCode = 0;
                     _response.ResponseMessage = "Job Deleted Successfully";
@@ -211,13 +211,13 @@ namespace API.Job.Application.Controllers
 
         [HttpGet]
         [Route("trackJobApp/{jobAppId}")]
-        public IActionResult TrackJobApps(int jobAppId)
+        public async Task<IActionResult> TrackJobApps(int jobAppId)
         {
             try
             {
                 // throw new Exception();
 
-                var appStatusLog = _jobAppRepo.TrackJobAppStatus(jobAppId);
+                var appStatusLog = await _jobAppRepo.TrackJobAppStatus(jobAppId);
                 return Ok(appStatusLog);
             }
             catch (Exception ex)
