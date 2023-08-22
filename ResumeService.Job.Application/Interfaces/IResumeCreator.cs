@@ -17,9 +17,9 @@ namespace ResumeService.Job.Application.Interfaces
         string GetPageFooter();
         string GetWorkExperienceString(List<WorkExperience> workExperience);
         string GetEducationString(List<Education> educations);
-        bool AddUserDataWhenResumeDownloaded(UserResumeCreate userData);
-        IEnumerable<UserResumeCreate> GetUserResumeDownloadData();
-        bool AddUserDataWhenResumeEmailed(UserResumeEmail userData);
-        IEnumerable<UserResumeEmail> GetUserResumeEmailData();
+        Task<bool> AddUserDataWhenResumeDownloaded(UserResumeCreate userData);
+        Task<IEnumerable<UserResumeCreate>> GetUserResumeDownloadData();
+        Task<bool> AddUserDataWhenResumeEmailed(UserResumeEmail userData);
+        Task<IEnumerable<UserResumeEmail>> GetUserResumeEmailData();
     }
 }

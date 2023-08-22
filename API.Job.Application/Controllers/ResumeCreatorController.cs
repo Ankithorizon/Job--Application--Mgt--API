@@ -40,7 +40,7 @@ namespace API.Job.Application.Controllers
         // create pdf resume as byte[] and display @ browser
         [HttpPost]
         [Route("createAndDownloadResume")]
-        public IActionResult CreateAndDownloadResume(MyResume myResume)
+        public async Task<IActionResult> CreateAndDownloadResume(MyResume myResume)
         {
             _response = new APIResponse();
 
@@ -122,7 +122,7 @@ namespace API.Job.Application.Controllers
                     ResumeCreatedAt = DateTime.Now,
                     UserIPAddress = myIpAddress.ToString().Substring(0, (myIpAddress.ToString().Length))
                 };
-                if (_resumeCreator.AddUserDataWhenResumeDownloaded(userData))
+                if (await _resumeCreator.AddUserDataWhenResumeDownloaded(userData))
                 {
                     return File(pdfBytes, "application/pdf");
                     // return File(pdfBytes, "application/pdf", "your_resume.pdf");
@@ -218,7 +218,7 @@ namespace API.Job.Application.Controllers
                     ResumeEmailedAt = DateTime.Now,
                     UserEmail = myResume.EmailMyResumeTo
                 };
-                if (_resumeCreator.AddUserDataWhenResumeEmailed(userData))
+                if (await _resumeCreator.AddUserDataWhenResumeEmailed(userData))
                 {
                     // convert byte[] to memory-stream
                     MemoryStream stream = new MemoryStream(pdfBytes);
@@ -242,11 +242,11 @@ namespace API.Job.Application.Controllers
 
         [HttpGet]
         [Route("getUserResumeDownloadData")]
-        public IActionResult GetUserResumeDownloadData()
+        public async Task<IActionResult> GetUserResumeDownloadData()
         {
             try
             {
-                var userDatas = _resumeCreator.GetUserResumeDownloadData();
+                var userDatas = await _resumeCreator.GetUserResumeDownloadData();
                 return Ok(userDatas);
             }
             catch(Exception ex)
@@ -257,11 +257,11 @@ namespace API.Job.Application.Controllers
 
         [HttpGet]
         [Route("getUserResumeEmailData")]
-        public IActionResult GetUserResumeEmailData()
+        public async Task<IActionResult> GetUserResumeEmailData()
         {
             try
             {
-                var userDatas = _resumeCreator.GetUserResumeEmailData();
+                var userDatas = await _resumeCreator.GetUserResumeEmailData();
                 return Ok(userDatas);
             }
             catch (Exception ex)

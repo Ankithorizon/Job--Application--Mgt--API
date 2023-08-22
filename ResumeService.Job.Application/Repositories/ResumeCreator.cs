@@ -7,6 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace ResumeService.Job.Application.Repositories
 {
@@ -256,12 +259,12 @@ namespace ResumeService.Job.Application.Repositories
             return educationString.ToString();
         }
 
-        public bool AddUserDataWhenResumeDownloaded(UserResumeCreate userData)
+        public async Task<bool> AddUserDataWhenResumeDownloaded(UserResumeCreate userData)
         {
             try
             {
-                appDbContext.UserResumeCreate.Add(userData);
-                appDbContext.SaveChanges();
+                await appDbContext.UserResumeCreate.AddAsync(userData);
+                await appDbContext.SaveChangesAsync();
                 return true;
             }
             catch (Exception ex)
@@ -270,21 +273,21 @@ namespace ResumeService.Job.Application.Repositories
             }
         }
 
-        public IEnumerable<UserResumeCreate> GetUserResumeDownloadData()
+        public async Task<IEnumerable<UserResumeCreate>> GetUserResumeDownloadData()
         {
-            var userDatas = appDbContext.UserResumeCreate;
+            var userDatas =  await appDbContext.UserResumeCreate.ToListAsync();
             if (userDatas != null)
                 return userDatas;
             else
                 return new List<UserResumeCreate>();
         }
 
-        public bool AddUserDataWhenResumeEmailed(UserResumeEmail userData)
+        public async Task<bool> AddUserDataWhenResumeEmailed(UserResumeEmail userData)
         {
             try
             {
-                appDbContext.UserResumeEmail.Add(userData);
-                appDbContext.SaveChanges();
+                await appDbContext.UserResumeEmail.AddAsync(userData);
+                await appDbContext.SaveChangesAsync();
                 return true;
             }
             catch (Exception ex)
@@ -293,9 +296,9 @@ namespace ResumeService.Job.Application.Repositories
             }
         }
 
-        public IEnumerable<UserResumeEmail> GetUserResumeEmailData()
+        public async Task<IEnumerable<UserResumeEmail>> GetUserResumeEmailData()
         {
-            var userDatas = appDbContext.UserResumeEmail;
+            var userDatas = await appDbContext.UserResumeEmail.ToListAsync();
             if (userDatas != null)
                 return userDatas;
             else
