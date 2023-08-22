@@ -1,11 +1,13 @@
 ﻿using EF.Core.Job.Application.Context;
 using EF.Core.Job.Application.Models;
+using Microsoft.EntityFrameworkCore;
 using ServiceLib.Job.Application.DTO;
 using ServiceLib.Job.Application.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ServiceLib.Job.Application.Repositories
 {
@@ -18,13 +20,15 @@ namespace ServiceLib.Job.Application.Repositories
             this.appDbContext = appDbContext;
         }
 
-        public bool JobAppClosed(int jobApplicationId)
+        public async Task<bool> JobAppClosed(int jobApplicationId)
         {
             var lastAppStatusLog = appDbContext.AppStatusLog
                                    .Where(x => x.JobApplicationId == jobApplicationId);
             if (lastAppStatusLog != null && lastAppStatusLog.Count() > 0)
             {
-                var lastAppStatusLog_ = lastAppStatusLog.ToList().LastOrDefault();
+                // var lastAppStatusLog_ = lastAppStatusLog.ToList().LastOrDefault();
+                var lastAppStatusLog__ = await lastAppStatusLog.ToListAsync();
+                var lastAppStatusLog_ = lastAppStatusLog__.LastOrDefault();
                 if (lastAppStatusLog_.AppStatus == AppStatusType.Closed)
                 {
                     return true;
@@ -33,7 +37,7 @@ namespace ServiceLib.Job.Application.Repositories
             return false;
         }
 
-        public bool StoreResumeFile(JobResume jobResume)
+        public async Task<bool> StoreResumeFile(JobResume jobResume)
         {
             try
             {
@@ -45,8 +49,8 @@ namespace ServiceLib.Job.Application.Repositories
                 // if record exist then override record
                 // else just add record
 
-                var jobResume_ = appDbContext.JobResumes
-                                    .Where(x => x.JobApplicationId == jobResume.JobApplicationId).FirstOrDefault();
+                var jobResume_ = await appDbContext.JobResumes
+                                    .Where(x => x.JobApplicationId == jobResume.JobApplicationId).FirstOrDefaultAsync();
                 if (jobResume_ != null)
                 {
                     // override
@@ -56,9 +60,9 @@ namespace ServiceLib.Job.Application.Repositories
                 else
                 {
                     // add
-                    var result = appDbContext.JobResumes.Add(jobResume);
+                    var result = await appDbContext.JobResumes.AddAsync(jobResume);
                 }
-                appDbContext.SaveChanges();
+                await appDbContext.SaveChangesAsync();
                 return true;
             }
             catch (Exception ex)

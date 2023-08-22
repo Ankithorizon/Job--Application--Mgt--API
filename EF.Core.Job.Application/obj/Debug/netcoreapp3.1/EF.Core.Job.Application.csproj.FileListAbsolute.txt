@@ -10,3 +10,4 @@ C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\obj\Debug\net
 C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\obj\Debug\netcoreapp3.1\EF.Core.Job.Application.dll
 C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\obj\Debug\netcoreapp3.1\EF.Core.Job.Application.pdb
 C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\obj\Debug\netcoreapp3.1\EF.Core.Job.Application.genruntimeconfig.cache
+C:\Job-Application-MGT\Job-Application-MGT\EF.Core.Job.Application\obj\Debug\netcoreapp3.1\EF.Core.Job.Application.csproj.AssemblyReference.cache

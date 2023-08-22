@@ -37,7 +37,7 @@ namespace API.Job.Application.Controllers
         // file-upload
         [HttpPost, DisableRequestSizeLimit]
         [Route("uploadResume")]
-        public IActionResult UploadResume([FromForm] ResumeUpload resumeUpload)
+        public async Task<IActionResult> UploadResume([FromForm] ResumeUpload resumeUpload)
         {
             _response = new APIResponse();
             try
@@ -64,7 +64,7 @@ namespace API.Job.Application.Controllers
                 {
                     // check for appStatus==Closed
                     // user can't edit this job-app
-                    if (_jobResumeRepo.JobAppClosed(Convert.ToInt32(resumeUpload.JobApplicationId)))
+                    if (await _jobResumeRepo.JobAppClosed(Convert.ToInt32(resumeUpload.JobApplicationId)))
                     {
                         _response.ResponseCode = -1;
                         _response.ResponseMessage = "This Job-Application is already CLOSED!";
@@ -118,7 +118,7 @@ namespace API.Job.Application.Controllers
                         FilePath = pathToSave,
                         JobApplicationId = jobApplicationId
                     };
-                    if (_jobResumeRepo.StoreResumeFile(jobResume))
+                    if (await _jobResumeRepo.StoreResumeFile(jobResume))
                     {
                         _response.ResponseCode = 0;
                         _response.ResponseMessage = "Resume Upload Success !";
