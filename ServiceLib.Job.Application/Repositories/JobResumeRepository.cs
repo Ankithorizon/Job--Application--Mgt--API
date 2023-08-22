@@ -71,12 +71,12 @@ namespace ServiceLib.Job.Application.Repositories
             }
         }
 
-        public string GetResumeFile(int jobApplicationId)
+        public async Task<string> GetResumeFile(int jobApplicationId)
         {
             string resumeFileName = null;
 
-            var jobResume = appDbContext.JobResumes
-                                .Where(x => x.JobApplicationId == jobApplicationId).FirstOrDefault();
+            var jobResume = await appDbContext.JobResumes
+                                .Where(x => x.JobApplicationId == jobApplicationId).FirstOrDefaultAsync();
             if (jobResume != null)
                 resumeFileName = jobResume.FileName;
 

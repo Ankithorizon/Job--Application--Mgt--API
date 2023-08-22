@@ -11,7 +11,7 @@ namespace ServiceLib.Job.Application.Interfaces
     {
         Task<bool> StoreResumeFile(JobResume jobResume);
         Task<bool> JobAppClosed(int jobApplicationId);
-        string GetResumeFile(int jobApplicationId);
+        Task<string> GetResumeFile(int jobApplicationId);
 
     }
 }

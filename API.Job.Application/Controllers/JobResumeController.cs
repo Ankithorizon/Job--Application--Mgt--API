@@ -159,7 +159,7 @@ namespace API.Job.Application.Controllers
                 // throw new Exception();
 
                 // check if file exist @ database
-                string fileName = _jobResumeRepo.GetResumeFile(jobApplicationId);
+                string fileName = await _jobResumeRepo.GetResumeFile(jobApplicationId);
                 if (fileName == null)
                 {
                     return BadRequest();
